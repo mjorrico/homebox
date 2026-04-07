@@ -13,6 +13,7 @@ services:
             - HBOX_DATABASE_USERNAME=${HBOX_DATABASE_USERNAME}
             - HBOX_DATABASE_PASSWORD=${HBOX_DATABASE_PASSWORD}
             - HBOX_DATABASE_DATABASE=${HBOX_DATABASE_DATABASE}
+            - HBOX_DATABASE_SSL_MODE=disable
         volumes:
             - homebox-data:/data/
         ports:
