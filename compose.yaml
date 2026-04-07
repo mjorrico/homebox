@@ -1,6 +1,7 @@
 services:
     homebox:
         image: ghcr.io/sysadminsmedia/homebox:latest
+        container_name: homebox
         restart: always
         environment:
             - HBOX_LOG_LEVEL=info
