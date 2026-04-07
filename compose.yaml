@@ -17,6 +17,8 @@ services:
             - homebox-data:/data/
         ports:
             - 3100:7745
+        networks:
+            - pgvector_network
 
 volumes:
     homebox-data:
