@@ -1,0 +1,29 @@
+services:
+    homebox:
+        image: ghcr.io/sysadminsmedia/homebox:latest
+        restart: always
+        environment:
+            - HBOX_LOG_LEVEL=info
+            - HBOX_LOG_FORMAT=text
+            - HBOX_WEB_MAX_UPLOAD_SIZE=10
+            - HBOX_OPTIONS_ALLOW_ANALYTICS=false
+            - HBOX_DATABASE_DRIVER=postgres
+            - HBOX_DATABASE_HOST=${HBOX_DATABASE_HOST}
+            - HBOX_DATABASE_PORT=${HBOX_DATABASE_PORT}
+            - HBOX_DATABASE_USERNAME=${HBOX_DATABASE_USERNAME}
+            - HBOX_DATABASE_PASSWORD=${HBOX_DATABASE_PASSWORD}
+            - HBOX_DATABASE_DATABASE=${HBOX_DATABASE_DATABASE}
+        volumes:
+            - homebox-data:/data/
+        ports:
+            - 3100:7745
+
+volumes:
+    homebox-data:
+        driver: local
+
+networks:
+    pgvector_network:
+        name: pgvector_network
+        driver: bridge
+        external: true
